@@ -93,7 +93,7 @@ public class Flight {
         if (!getDestination().equals(other.getDestination())) {
             return false;
         }
-        if (getFlightNumber() != other.getFlightNumber()) {
+        if (getFlightNumber().equals(other.getFlightNumber())) {
             return false;
         }
         if (getDepartureTime() != other.getDepartureTime()) {
