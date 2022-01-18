@@ -3,7 +3,7 @@ import java.util.Objects;
 public class Airport {
     private String name;
 
-    public Airport(String name) throws BadParameterException, NullParameterException {
+    public Airport(String name) throws NullParameterException, BadParameterException {
         setName(name);
     }
 

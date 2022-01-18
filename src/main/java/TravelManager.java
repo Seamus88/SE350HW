@@ -1,40 +1,12 @@
 import java.util.Objects;
 
 public class TravelManager {
-    private Flight flight;
+    public static void main(String[] args) throws BadParameterException, NullParameterException {
+        Airport origin = new Airport("ORD");
+        Airport destination = new Airport("LAX");
+        Airline airline = new Airline("SW");
+        Flight flying = new Flight(airline, origin, destination);
 
-    public TravelManager(Flight flight) {
-        setFlight(flight);
+        System.out.println(flying);
     }
-
-    private void setFlight(Flight fli) {
-        flight = fli;
-    }
-
-    public Flight getFlight() {
-        return flight;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(flight);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null || (getClass() != obj.getClass())) {
-            return false;
-        }
-        final TravelManager other = (TravelManager) obj;
-        if (!getFlight().equals(other.getFlight())) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return getFlight().toString();
-    }
-
 }
