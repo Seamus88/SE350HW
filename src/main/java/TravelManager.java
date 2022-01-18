@@ -1,16 +1,12 @@
+import java.util.Objects;
+
 public class TravelManager {
-    private Flight flight;
+    public static void main(String[] args) throws BadParameterException, NullParameterException {
+        Airport origin = new Airport("ORD");
+        Airport destination = new Airport("LAX");
+        Airline airline = new Airline("SW");
+        Flight flying = new Flight(airline, origin, destination);
 
-    public TravelManager(Flight flight) {
-        setFlight(flight);
+        System.out.println(flying);
     }
-
-    private void setFlight(Flight fl) {
-        flight = fl;
-    }
-
-    public Flight getFlight() {
-        return flight;
-    }
-
 }
