@@ -21,12 +21,14 @@ public class Airline {
         name = aName;
     }
 
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(String.format("%-20s %s%n", "Airline:", getName()));
         return sb.toString();
     }
 
+    @Override
     public boolean equals(Object obj) {
         if (obj == null || (getClass() != obj.getClass())) {
             return false;

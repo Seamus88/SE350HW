@@ -69,6 +69,8 @@ public class Flight {
     public Date getDepartureTime() {
         return departureTime;
     }
+
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(String.format("%-20s %s%n", "Airline:", getAirline().toString()));
@@ -79,6 +81,7 @@ public class Flight {
         return sb.toString();
     }
 
+    @Override
     public boolean equals(Object obj) {
         if (obj == null || (getClass() != obj.getClass())) {
             return false;
