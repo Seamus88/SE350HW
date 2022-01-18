@@ -9,4 +9,8 @@ public class TravelManager {
         flight = fl;
     }
 
+    public Flight getFlight() {
+        return flight;
+    }
+
 }
