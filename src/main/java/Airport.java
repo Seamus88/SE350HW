@@ -1,4 +1,4 @@
-
+import java.util.Objects;
 
 public class Airport {
     private String name;
@@ -19,6 +19,28 @@ public class Airport {
 
     public String getName() {
         return name;
+    }
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(String.format("%-20s %s%n", "Airport:", getName()));
+        return sb.toString();
+    }
+
+    public boolean equals(Object obj) {
+        if (obj == null || (getClass() != obj.getClass())) {
+            return false;
+        }
+        final Airport other = (Airport) obj;
+        if(!getName().equals(other.getName())) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 
 }
