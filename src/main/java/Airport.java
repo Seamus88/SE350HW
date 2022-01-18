@@ -3,7 +3,7 @@
 public class Airport {
     private String name;
 
-    public Airport(String name) {
+    public Airport(String name) throws BadParameterException, NullParameterException {
         setName(name);
     }
 
@@ -11,10 +11,10 @@ public class Airport {
         if (aName == null) {
             throw new NullParameterException("Null argument used in method setName");
         }
-        if (aName.toUpper().trim().length() != 3) {
+        if (aName.toUpperCase().trim().length() != 3) {
             throw new BadParameterException("Invalid argument used in method setName");
         }
-        name = name;
+        name = aName;
     }
 
     public String getName() {
