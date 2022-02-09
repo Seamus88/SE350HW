@@ -1,9 +1,13 @@
+package flight;
+
+import exceptions.NullParameterException;
+
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Objects;
 import java.util.UUID;
 
-public class Flight {
+public class CommercialFlight {
     private Airline airline;
     private Airport origine;
     private Airport destination;
@@ -11,13 +15,12 @@ public class Flight {
     private Date departureTime;
 
 
-    public Flight(Airline airline, Airport origine, Airport destination) throws NullParameterException {
+    public CommercialFlight(Airline airline, Airport origine, Airport destination) throws NullParameterException {
         setAirline(airline);
         setOrigine(origine);
         setDestination(destination);
         setFlightNumber();
         setDepartureTime();
-
     }
 
     public void setAirline(Airline aLine) throws NullParameterException {
@@ -73,10 +76,10 @@ public class Flight {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(String.format("%-20s %s%n", "Airline:", getAirline().toString()));
+        sb.append(String.format("%-20s %s%n", "flight.Airline:", getAirline().toString()));
         sb.append(String.format("%-20s %s%n", "Origine:", getOrigine().toString()));
         sb.append(String.format("%-20s %s%n", "Destination:", getDestination().toString()));
-        sb.append(String.format("%-20s %s%n", "Flight Number:", getFlightNumber()));
+        sb.append(String.format("%-20s %s%n", "flight.Flight Number:", getFlightNumber()));
         sb.append(String.format("%-20s %s%n", "Departure:", getDepartureTime().toString()));
         return sb.toString();
     }
@@ -86,7 +89,7 @@ public class Flight {
         if (obj == null || (getClass() != obj.getClass())) {
             return false;
         }
-        final Flight other = (Flight) obj;
+        final CommercialFlight other = (CommercialFlight) obj;
         if(!getAirline().equals(other.getAirline())) {
             return false;
         }
@@ -99,10 +102,7 @@ public class Flight {
         if (getFlightNumber().equals(other.getFlightNumber())) {
             return false;
         }
-        if (getDepartureTime() != other.getDepartureTime()) {
-            return false;
-        }
-        return true;
+        return getDepartureTime() == other.getDepartureTime();
     }
 
     @Override
