@@ -1,7 +1,7 @@
-package flight.airline;
+package hw3.airline;
 
-import flight.exceptions.BadParameterException;
-import flight.exceptions.NullParameterException;
+import hw3.exceptions.BadParameterException;
+import hw3.exceptions.NullParameterException;
 
 import java.util.Objects;
 
@@ -23,13 +23,13 @@ public class Airline {
         if(aName.trim().length() > MAX_NAME_LENGTH) {
             throw new BadParameterException("Parameter value exceeded max length in setName");
         }
-        name = aName;
+        this.name = aName;
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(String.format("%-20s %s%n", "flight.airline.Airline:", getName()));
+        sb.append(String.format("%-20s %n", getName()));
         return sb.toString();
     }
 

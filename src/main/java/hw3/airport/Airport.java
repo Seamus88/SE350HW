@@ -1,7 +1,7 @@
-package flight.airport;
+package hw3.airport;
 
-import flight.exceptions.BadParameterException;
-import flight.exceptions.NullParameterException;
+import hw3.exceptions.BadParameterException;
+import hw3.exceptions.NullParameterException;
 
 import java.util.Objects;
 
@@ -19,7 +19,7 @@ public class Airport {
         if (aName.toUpperCase().trim().length() != 3) {
             throw new BadParameterException("Invalid argument used in method setName");
         }
-        name = aName;
+        this.name = aName;
     }
 
     public String getName() {
@@ -29,7 +29,7 @@ public class Airport {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(String.format("%-20s %s%n", "flight.airport.Airport:", getName()));
+        sb.append(String.format("%-20s %n", getName()));
         return sb.toString();
     }
 

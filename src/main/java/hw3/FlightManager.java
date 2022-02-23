@@ -1,51 +1,42 @@
-package flight;
+package hw3;
 
-import flight.exceptions.BadParameterException;
-import flight.exceptions.NullParameterException;
-import flight.airline.Airline;
-import flight.airport.Airport;
-import flight.factory.CommercialFlightFactory;
-import flight.factory.FlightFactory;
+import hw3.exceptions.BadParameterException;
+import hw3.exceptions.NullParameterException;
+import hw3.airline.Airline;
+import hw3.airport.Airport;
+import hw3.flight.Flight;
+import hw3.flight.factory.FlightFactory;
+import hw3.flight.CommercialFlight;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public final class FlightManager {
     private static FlightManager fmInstance;
-    private static List<CommercialFlight> flights;
-    private static FlightFactory factory;
+    private static List<Flight> flights;
 
 
     public static FlightManager getInstance() throws Exception {
         if (fmInstance == null) {
             fmInstance = new FlightManager();
-            flights = new ArrayList();
         }
         return fmInstance;
     }
 
-    public FlightManager() {};
+    private FlightManager() {
+        flights = new ArrayList<Flight>();
+    };
 
-    public String createFlight() throws BadParameterException, NullParameterException {
-        //RANDOM CREATION FOR NOW
-        CommercialFlightFactory cff = new CommercialFlightFactory();
-        Airport origin = new Airport("ORD");
-        Airport destination = new Airport("LAX");
-        Airline airline = new Airline("SW");
-        CommercialFlight cf = cff.createFlight("commercial", airline, origin, destination);
-        flights.add(cf);
-        return cf.getFlightNumber();
+    public String createFlight(String type, Airline airline, Airport origin, Airport destination)  {
+        Flight flight = FlightFactory.createFlight(type, airline, origin, destination);
+        flights.add(flight);
+
+        return flight.getFlightNumber();
     }
 
-    public CommercialFlight getFlightByNumber(String flightNum) throws BadParameterException, NullParameterException {
-        for (int i = 0; i < flights.size() - 1; i++) {
-            if (flights.get(i).getFlightNumber().equals(flightNum)) {
-                return flights.get(i);
-            } else {
-                throw new BadParameterException("Parameter flight number unknown.");
-            }
-        }
-
-        return null;
+    public Optional<Flight> getFlightByNumber(String flightNum) {
+        return flights.stream()
+                .filter(flt -> flt.getFlightNumber().equals(flightNum)).findFirst();
     }
 }

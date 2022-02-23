@@ -1,4 +1,4 @@
-package hw3;
+package hw3.flight;
 
 import hw3.exceptions.NullParameterException;
 import hw3.airline.Airline;
@@ -9,11 +9,11 @@ import java.util.Date;
 import java.util.Objects;
 import java.util.UUID;
 
-public class CommercialFlight {
+public class CommercialFlight implements Flight {
     private Airline airline;
     private Airport origine;
     private Airport destination;
-    private String flightNumber;
+    private UUID flightNumber;
     private Date departureTime;
 
 
@@ -29,60 +29,55 @@ public class CommercialFlight {
         if (aLine == null) {
             throw new NullParameterException("Null value used in setAirline");
         }
-        airline = aLine;
+        this.airline = aLine;
     }
-    public Airline getAirline() {
-        return airline;
+    public String getAirline() {
+        return airline.toString();
     }
 
     public void setOrigine(Airport origin) throws NullParameterException {
         if (origin == null) {
             throw new NullParameterException("Null value used in setOrigine");
         }
-        origine = origin;
+        this.origine = origin;
     }
-    public Airport getOrigine() {
-        return origine;
+    public String getOrigine() {
+        return origine.toString();
     }
 
     public void setDestination(Airport destined) throws NullParameterException {
         if (destined == null) {
             throw new NullParameterException("Null value used in setOrigine");
         }
-        destination = destined;
+        this.destination = destined;
     }
-    public Airport getDestination() {
-        return destination;
+    public String getDestination() {
+        return destination.toString();
     }
 
 
     public void setFlightNumber() {
-        UUID uidFlight = UUID.randomUUID();
-        flightNumber = uidFlight.toString();
+        this.flightNumber = UUID.randomUUID();
     }
     public String getFlightNumber() {
-        return flightNumber;
+        return flightNumber.toString();
     }
 
     public void setDepartureTime() {
-        long rangebegin = Timestamp.valueOf("2022-01-20 00:00:00").getTime();
-        long rangeend = Timestamp.valueOf("2022-02-20 00:00:00").getTime();
-        long diff = rangeend - rangebegin + 1;
-        Timestamp rand = new Timestamp(rangebegin + (long)(Math.random() * diff));
-        departureTime = rand;
+        this.departureTime = new  Date(2022, 06, 01, 12, 01);
     }
-    public Date getDepartureTime() {
-        return departureTime;
+    public String getDepartureTime() {
+        return departureTime.toString();
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(String.format("%-20s %s%n", "flight.airline.Airline:", getAirline().toString()));
-        sb.append(String.format("%-20s %s%n", "Origine:", getOrigine().toString()));
-        sb.append(String.format("%-20s %s%n", "Destination:", getDestination().toString()));
-        sb.append(String.format("%-20s %s%n", "flight.Flight Number:", getFlightNumber()));
-        sb.append(String.format("%-20s %s%n", "Departure:", getDepartureTime().toString()));
+        sb.append(String.format("%-20s %s%n", "Airline:", getAirline()));
+        sb.append(String.format("%-20s %s%n", "Origine:", getOrigine()));
+        sb.append(String.format("%-20s %s%n", "Destination:", getDestination()));
+        sb.append(String.format("%-20s %s%n", "Number:", getFlightNumber()));
+        sb.append(String.format("%-20s %s%n", "Departure:", getDepartureTime()));
         return sb.toString();
     }
 
