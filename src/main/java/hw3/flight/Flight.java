@@ -1,4 +1,4 @@
-package flight;
+package hw3;
 
 public interface Flight {
     void getAirline();

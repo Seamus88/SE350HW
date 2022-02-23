@@ -1,4 +1,4 @@
-package exceptions;
+package flight.exceptions;
 
 public class NullParameterException extends Throwable {
     public NullParameterException(String message) {

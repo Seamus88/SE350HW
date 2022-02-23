@@ -1,6 +1,8 @@
-package flight;
+package hw3;
 
-import exceptions.NullParameterException;
+import hw3.exceptions.NullParameterException;
+import hw3.airline.Airline;
+import hw3.airport.Airport;
 
 import java.sql.Timestamp;
 import java.util.Date;
@@ -76,7 +78,7 @@ public class CommercialFlight {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(String.format("%-20s %s%n", "flight.Airline:", getAirline().toString()));
+        sb.append(String.format("%-20s %s%n", "flight.airline.Airline:", getAirline().toString()));
         sb.append(String.format("%-20s %s%n", "Origine:", getOrigine().toString()));
         sb.append(String.format("%-20s %s%n", "Destination:", getDestination().toString()));
         sb.append(String.format("%-20s %s%n", "flight.Flight Number:", getFlightNumber()));

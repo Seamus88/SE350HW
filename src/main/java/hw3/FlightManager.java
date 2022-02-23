@@ -1,7 +1,9 @@
 package flight;
 
-import exceptions.BadParameterException;
-import exceptions.NullParameterException;
+import flight.exceptions.BadParameterException;
+import flight.exceptions.NullParameterException;
+import flight.airline.Airline;
+import flight.airport.Airport;
 import flight.factory.CommercialFlightFactory;
 import flight.factory.FlightFactory;
 

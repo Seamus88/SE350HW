@@ -1,6 +1,6 @@
 package flight;
 
-import exceptions.NullParameterException;
+import flight.exceptions.NullParameterException;
 
 public class TravelManager {
     public static void main(String[] args) throws Exception, NullParameterException {

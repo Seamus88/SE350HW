@@ -1,7 +1,7 @@
-package flight;
+package flight.airport;
 
-import exceptions.BadParameterException;
-import exceptions.NullParameterException;
+import flight.exceptions.BadParameterException;
+import flight.exceptions.NullParameterException;
 
 import java.util.Objects;
 
@@ -29,7 +29,7 @@ public class Airport {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(String.format("%-20s %s%n", "flight.Airport:", getName()));
+        sb.append(String.format("%-20s %s%n", "flight.airport.Airport:", getName()));
         return sb.toString();
     }
 
