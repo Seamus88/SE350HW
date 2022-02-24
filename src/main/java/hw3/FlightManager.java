@@ -1,12 +1,11 @@
 package hw3;
 
-import hw3.exceptions.BadParameterException;
-import hw3.exceptions.NullParameterException;
 import hw3.airline.Airline;
 import hw3.airport.Airport;
+import hw3.exceptions.BadParameterException;
+import hw3.exceptions.NullParameterException;
 import hw3.flight.Flight;
-import hw3.flight.factory.FlightFactory;
-import hw3.flight.CommercialFlight;
+import hw3.flight.FlightFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +16,7 @@ public final class FlightManager {
     private static List<Flight> flights;
 
 
-    public static FlightManager getInstance() throws Exception {
+    public static FlightManager getInstance() {
         if (fmInstance == null) {
             fmInstance = new FlightManager();
         }
@@ -25,18 +24,20 @@ public final class FlightManager {
     }
 
     private FlightManager() {
-        flights = new ArrayList<Flight>();
+        flights = new ArrayList<>();
     };
 
-    public String createFlight(String type, Airline airline, Airport origin, Airport destination)  {
+    public String createFlight(String type, Airline airline, Airport origin, Airport destination) throws BadParameterException, NullParameterException {
         Flight flight = FlightFactory.createFlight(type, airline, origin, destination);
         flights.add(flight);
-
-        return flight.getFlightNumber();
+        if (flight.getFlightNumber() == null) {
+            return "No Flight";
+        } else {
+            return flight.getFlightNumber();
+        }
     }
 
     public Optional<Flight> getFlightByNumber(String flightNum) {
-        return flights.stream()
-                .filter(flt -> flt.getFlightNumber().equals(flightNum)).findFirst();
+        return flights.stream().filter(flt -> flt.getFlightNumber().equals(flightNum)).findFirst();
     }
 }

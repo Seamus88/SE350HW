@@ -7,22 +7,15 @@ import java.util.Objects;
 
 public class Airline {
     private String name;
-    private final int MAX_NAME_LENGTH = 7;
 
 
-    public Airline(String name) throws NullParameterException, BadParameterException {
+    public Airline(String name) {
         setName(name);
     }
 
     public String getName() { return name; }
 
-    public void setName(String aName) throws NullParameterException, BadParameterException {
-        if(aName == null) {
-            throw new NullParameterException("Null argument used in setName");
-        }
-        if(aName.trim().length() > MAX_NAME_LENGTH) {
-            throw new BadParameterException("Parameter value exceeded max length in setName");
-        }
+    private void setName(String aName) {
         this.name = aName;
     }
 
@@ -35,13 +28,10 @@ public class Airline {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj == null || (getClass() != obj.getClass())) {
-            return false;
-        }
-        final Airline other = (Airline) obj;
-        if (!getName().equals(other.getName())) {
-            return false;
-        }
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Airline other = (Airline) obj;
+        if (!getName().equals(other.getName())) return false;
         return true;
     }
 

@@ -5,6 +5,7 @@ import hw3.airline.Airline;
 import hw3.airport.Airport;
 
 import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
 import java.util.UUID;
@@ -55,7 +56,6 @@ public class CommercialFlight implements Flight {
         return destination.toString();
     }
 
-
     public void setFlightNumber() {
         this.flightNumber = UUID.randomUUID();
     }
@@ -63,21 +63,19 @@ public class CommercialFlight implements Flight {
         return flightNumber.toString();
     }
 
-    public void setDepartureTime() {
-        this.departureTime = new  Date(2022, 06, 01, 12, 01);
-    }
+    public void setDepartureTime() {this.departureTime = new Date(122, 06, 01, 12, 01);}
     public String getDepartureTime() {
         return departureTime.toString();
     }
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(String.format("%-20s %s%n", "Airline:", getAirline()));
-        sb.append(String.format("%-20s %s%n", "Origine:", getOrigine()));
-        sb.append(String.format("%-20s %s%n", "Destination:", getDestination()));
-        sb.append(String.format("%-20s %s%n", "Number:", getFlightNumber()));
-        sb.append(String.format("%-20s %s%n", "Departure:", getDepartureTime()));
+        String sb = String.format("%-15s %s", "Airline:", getAirline()) +
+                String.format("%-15s %s", "Origine:", getOrigine()) +
+                String.format("%-15s %s", "Destination:", getDestination()) +
+                String.format("%-15s %s%n", "Type:", "Commercial") +
+                String.format("%-15s %s%n", "Number:", getFlightNumber()) +
+                String.format("%-15s %s%n", "Departure:", getDepartureTime());
         return sb.toString();
     }
 

@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.Objects;
 import java.util.UUID;
 
-public class PassangerFlight implements Flight{
+public class PassangerFlight implements Flight {
     private Airline airline;
     private Airport origine;
     private Airport destination;
@@ -17,17 +17,17 @@ public class PassangerFlight implements Flight{
     private Date departureTime;
     private int passengerCapacity;
 
-    public PassangerFlight(Airline airline, Airport origin, Airport destination) throws NullParameterException {
+    public PassangerFlight(Airline airline, Airport origine, Airport destination) throws NullParameterException, BadParameterException {
         setAirline(airline);
         setOrigine(origine);
         setDestination(destination);
         setFlightNumber();
         setDepartureTime();
-        setPassengerCapacity(2);
+        setPassengerCapacity();
     }
 
-    private void setPassengerCapacity(int capacity) {
-        this.passengerCapacity = capacity;
+    private void setPassengerCapacity() {
+        this.passengerCapacity = 4;
     }
     public String getPassengerCapacity() {
         return Integer.toString(passengerCapacity);
@@ -72,7 +72,7 @@ public class PassangerFlight implements Flight{
     }
 
     public void setDepartureTime() {
-        this.departureTime = new  Date(2022, 06, 01, 12, 01);
+        this.departureTime = new  Date(122, 06, 01, 12, 01);
     }
     public String getDepartureTime() {
         return departureTime.toString();
@@ -81,11 +81,13 @@ public class PassangerFlight implements Flight{
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(String.format("%-20s %s%n", "Airline:", getAirline()));
-        sb.append(String.format("%-20s %s%n", "Origine:", getOrigine()));
-        sb.append(String.format("%-20s %s%n", "Destination:", getDestination()));
-        sb.append(String.format("%-20s %s%n", "Number:", getFlightNumber()));
-        sb.append(String.format("%-20s %s%n", "Departure:", getDepartureTime()));
+        sb.append(String.format("%-15s %s", "Airline:", getAirline()));
+        sb.append(String.format("%-15s %s", "Origine:", getOrigine()));
+        sb.append(String.format("%-15s %s", "Destination:", getDestination()));
+        sb.append(String.format("%-15s %s%n", "Type:", "Passenger"));
+        sb.append(String.format("%-15s %s%n", "Capacity:", getPassengerCapacity()));
+        sb.append(String.format("%-15s %s%n", "Number:", getFlightNumber()));
+        sb.append(String.format("%-15s %s%n", "Departure:", getDepartureTime()));
         return sb.toString();
     }
 
