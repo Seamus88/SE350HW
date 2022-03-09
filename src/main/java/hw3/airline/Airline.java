@@ -9,13 +9,19 @@ public class Airline {
     private String name;
 
 
-    public Airline(String name) {
+    public Airline(String name) throws NullParameterException, BadParameterException {
         setName(name);
     }
 
     public String getName() { return name; }
 
-    private void setName(String aName) {
+    private void setName(String aName) throws NullParameterException, BadParameterException {
+        if (aName == null) {
+            throw new NullParameterException("Airline name cannot be null");
+        }
+        if (aName.length() > 8) {
+            throw new BadParameterException("Invalid name");
+        }
         this.name = aName;
     }
 

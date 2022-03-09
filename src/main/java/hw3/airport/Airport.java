@@ -8,12 +8,19 @@ import java.util.Objects;
 public class Airport {
     private String name;
 
-    public Airport(String name){
+    public Airport(String name) throws NullParameterException, BadParameterException {
         setName(name);
     }
 
-    private void setName(String aName){
-        this.name = aName;
+    private void setName(String aName) throws NullParameterException, BadParameterException{
+        if (aName == null) {
+            throw new NullParameterException("Airport name cannot be null.");
+        }
+        if (aName.length() != 3 || !aName.equals(aName.toUpperCase())) {
+            throw new BadParameterException("Airport name is invalid.");
+        }
+
+        this.name = aName.toUpperCase();
     }
 
     public String getName() {
