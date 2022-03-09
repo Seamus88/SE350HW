@@ -1,8 +1,7 @@
-package hw3.FlightManager;
+package hw3.flightmanager;
 
 import hw3.airline.Airline;
 import hw3.airport.Airport;
-import hw3.exceptions.BadParameterException;
 import hw3.exceptions.NullParameterException;
 import hw3.flight.Flight;
 import hw3.flight.FlightFactory;

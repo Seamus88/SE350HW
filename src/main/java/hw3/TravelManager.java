@@ -1,7 +1,7 @@
 package hw3;
 
-import hw3.FlightManager.FlightManager;
-import hw3.FlightManager.ProxyFlightManager;
+import hw3.flightmanager.FlightManager;
+import hw3.flightmanager.ProxyFlightManager;
 import hw3.airline.AirlineFactory;
 import hw3.airport.AirportFactory;
 import hw3.exceptions.NullParameterException;
@@ -12,7 +12,7 @@ import java.util.Optional;
 public class TravelManager {
     public static void main(String[] args) throws Exception, NullParameterException {
         FlightManager fm = new ProxyFlightManager();
-        
+
         String cFlightNumber = fm.createFlight("commercialFlight", AirlineFactory.getAirline("SWest"), AirportFactory.getAirport("JAX"), AirportFactory.getAirport("MDW"));
         String pFlightNumber = fm.createFlight("passangerFlight", AirlineFactory.getAirline("SWest"), AirportFactory.getAirport("MDW"), AirportFactory.getAirport("JAX"));
 
